@@ -14,6 +14,9 @@ app.set("view engine","ejs")
 app.use("/User",UserRouter)
 app.use(express.static('public'));
 
+app.get("/",(req,res)=>{
+    res.render("header",{ user: req.user })
+ })
 
 
 app.listen(8120,()=>{
