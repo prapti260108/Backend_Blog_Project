@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            padding: 20px 30px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+        }
+
+        .logo h4 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .menu li:hover {
+            text-decoration: underline;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-buttons a,
+        .header-buttons form {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .header-buttons form {
+            margin: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #f0ad4e;
+            color: white;
+            border-radius: 4px;
+            margin: 0;
+        }
+
+        button:hover {
+            background-color: #ec971f;
+        }
+
+        form.logout {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-buttons span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h4>Logo</h4>
+        </div>
+        <ul class="menu">
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+        <div class="header-buttons">
+            <% if (typeof username !== 'undefined') { %>
+                <span>Welcome, <%= username %></span>
+                <form action="/user/logout" method="post" class="logout">
+                    <input type="hidden" name="username" value="<%= username %>">
+                    <button type="submit">Log Out</button>
+                </form>
+            <% } else { %>
+                <a href="/user/signUP"><button id="signInBtn">Sign Up</button></a>
+                <a href="/user/login"><button id="loginBtn">Login</button></a>
+            <% } %>
+        </div>
+    </header>
+</body>
+
+</html>
